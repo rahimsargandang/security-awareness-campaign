@@ -373,9 +373,9 @@
                     CYBERGUARD<span class="text-cyber-green">_</span>
                 </a>
                 <div class="hidden md:flex items-center gap-8">
+                    <a href="#quiz" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[ASSESSMENT]</a>
                     <a href="#threats" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[THREATS]</a>
                     <a href="#practices" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[DEFENSE]</a>
-                    <a href="#quiz" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[ASSESSMENT]</a>
                     <a href="#checklist" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[PROTOCOL]</a>
                 </div>
                 <div class="flex items-center gap-2">
@@ -446,8 +446,8 @@
                 </div>
             </div>
 
-            <a href="#threats" class="inline-flex items-center gap-3 px-8 py-4 bg-cyber-cyan text-cyber-black font-bold tracking-wider hover:bg-cyber-green transition-all duration-300 group">
-                <span>BEGIN TRAINING</span>
+            <a href="#quiz" class="inline-flex items-center gap-3 px-8 py-4 bg-cyber-cyan text-cyber-black font-bold tracking-wider hover:bg-cyber-green transition-all duration-300 group">
+                <span>START ASSESSMENT</span>
                 <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
@@ -458,6 +458,44 @@
         <div class="absolute bottom-10 left-1/2 scroll-indicator">
             <div class="w-8 h-12 border-2 border-cyber-cyan rounded-full flex justify-center pt-2">
                 <div class="w-1 h-3 bg-cyber-cyan rounded-full animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quiz Section -->
+    <section id="quiz" class="py-32 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-purple font-mono tracking-[0.5em] mb-4">// KNOWLEDGE_ASSESSMENT</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    TEST YOUR <span class="text-cyber-purple">AWARENESS</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-purple to-transparent mx-auto"></div>
+                <p class="text-gray-400 mt-6 max-w-xl mx-auto">
+                    Take this assessment first to discover your security knowledge gaps, then learn how to protect yourself.
+                </p>
+            </div>
+
+            <div class="terminal reveal" style="box-shadow: 0 0 30px rgba(191, 0, 255, 0.3);">
+                <div class="terminal-header">
+                    <div class="terminal-dot bg-cyber-red"></div>
+                    <div class="terminal-dot bg-cyber-orange"></div>
+                    <div class="terminal-dot bg-cyber-green"></div>
+                    <span class="ml-4 text-gray-500 text-sm">quiz_module.exe</span>
+                </div>
+                <div class="p-8" id="quiz-container">
+                    <!-- Quiz content populated by JS -->
+                </div>
+            </div>
+
+            <!-- Continue Learning Button -->
+            <div class="text-center mt-12">
+                <a href="#threats" class="inline-flex items-center gap-3 px-8 py-4 border border-cyber-cyan text-cyber-cyan font-bold tracking-wider hover:bg-cyber-cyan hover:text-cyber-black transition-all duration-300 group">
+                    <span>CONTINUE TO LEARNING</span>
+                    <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
@@ -696,31 +734,6 @@
         </div>
     </section>
 
-    <!-- Interactive Quiz Section -->
-    <section id="quiz" class="py-32 relative">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <p class="text-cyber-purple font-mono tracking-[0.5em] mb-4">// KNOWLEDGE_ASSESSMENT</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
-                    TEST YOUR <span class="text-cyber-purple">AWARENESS</span>
-                </h2>
-                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-purple to-transparent mx-auto"></div>
-            </div>
-
-            <div class="terminal reveal" style="box-shadow: 0 0 30px rgba(191, 0, 255, 0.3);">
-                <div class="terminal-header">
-                    <div class="terminal-dot bg-cyber-red"></div>
-                    <div class="terminal-dot bg-cyber-orange"></div>
-                    <div class="terminal-dot bg-cyber-green"></div>
-                    <span class="ml-4 text-gray-500 text-sm">quiz_module.exe</span>
-                </div>
-                <div class="p-8" id="quiz-container">
-                    <!-- Quiz content populated by JS -->
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Security Checklist Section -->
     <section id="checklist" class="py-32 relative bg-cyber-dark/50">
         <div class="max-w-4xl mx-auto px-6">
@@ -840,9 +853,9 @@
                 <div>
                     <h4 class="font-display text-white tracking-wider mb-4">QUICK LINKS</h4>
                     <ul class="space-y-2 text-sm">
+                        <li><a href="#quiz" class="text-gray-400 hover:text-cyber-cyan transition-colors">> Knowledge Assessment</a></li>
                         <li><a href="#threats" class="text-gray-400 hover:text-cyber-cyan transition-colors">> Threat Database</a></li>
                         <li><a href="#practices" class="text-gray-400 hover:text-cyber-cyan transition-colors">> Defense Protocols</a></li>
-                        <li><a href="#quiz" class="text-gray-400 hover:text-cyber-cyan transition-colors">> Knowledge Assessment</a></li>
                         <li><a href="#checklist" class="text-gray-400 hover:text-cyber-cyan transition-colors">> Security Checklist</a></li>
                     </ul>
                 </div>
