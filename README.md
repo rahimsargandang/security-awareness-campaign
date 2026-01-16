@@ -39,8 +39,21 @@ Real-world breach analysis including:
 - Cyber-noir aesthetic with terminal/hacker theme
 - Matrix-style animated background
 - Neon glow effects and glitch animations
-- Fully responsive design
 - Custom cursor and interactive hover states
+
+## Mobile Responsive
+Fully optimized for all devices:
+
+- **Mobile Navigation** - Hamburger menu with smooth toggle animation
+- **Responsive Typography** - Text scales appropriately across screen sizes
+- **Touch-Friendly** - All interactive elements meet 44px minimum touch target
+- **Performance Optimized** - Heavy animations disabled on mobile for better battery life
+- **Adaptive Layout** - Grid layouts stack properly on smaller screens
+
+Tested on:
+- iPhone / Android phones
+- iPad / Android tablets
+- Desktop browsers (Chrome, Firefox, Safari, Edge)
 
 ## Local Development
 Simply open `index.html` in a browser. No build process required.
@@ -58,7 +71,16 @@ This is a static site that can be deployed to:
 - GitHub Pages
 - Netlify
 - Vercel
+- Cloudflare Pages
 - Any static hosting
+
+## Screenshots
+
+| Desktop | Mobile |
+|---------|--------|
+| Hero section with Matrix background | Responsive hamburger menu |
+| Interactive quiz terminal | Touch-optimized buttons |
+| Phishing email simulator | Stacked card layouts |
 
 ## License
 MIT License - Feel free to use and modify for your organization's security training needs.
