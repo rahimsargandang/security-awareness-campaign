@@ -372,11 +372,14 @@
                 <a href="#" class="font-display text-2xl font-bold text-cyber-cyan neon-cyan tracking-wider">
                     CYBERGUARD<span class="text-cyber-green">_</span>
                 </a>
-                <div class="hidden md:flex items-center gap-8">
+                <div class="hidden lg:flex items-center gap-6">
                     <a href="#quiz" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[ASSESSMENT]</a>
+                    <a href="#phishing-sim" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[SIMULATOR]</a>
                     <a href="#threats" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[THREATS]</a>
                     <a href="#practices" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[DEFENSE]</a>
-                    <a href="#checklist" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[PROTOCOL]</a>
+                    <a href="#case-studies" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[CASES]</a>
+                    <a href="#glossary" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[GLOSSARY]</a>
+                    <a href="#incident" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[REPORT]</a>
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></span>
@@ -490,12 +493,115 @@
 
             <!-- Continue Learning Button -->
             <div class="text-center mt-12">
-                <a href="#threats" class="inline-flex items-center gap-3 px-8 py-4 border border-cyber-cyan text-cyber-cyan font-bold tracking-wider hover:bg-cyber-cyan hover:text-cyber-black transition-all duration-300 group">
-                    <span>CONTINUE TO LEARNING</span>
+                <a href="#phishing-sim" class="inline-flex items-center gap-3 px-8 py-4 border border-cyber-cyan text-cyber-cyan font-bold tracking-wider hover:bg-cyber-cyan hover:text-cyber-black transition-all duration-300 group">
+                    <span>TRY PHISHING SIMULATOR</span>
                     <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                     </svg>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phishing Email Simulator Section -->
+    <section id="phishing-sim" class="py-32 relative bg-cyber-dark/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-orange font-mono tracking-[0.5em] mb-4">// PHISHING_SIMULATOR</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    SPOT THE <span class="text-cyber-orange" style="text-shadow: 0 0 10px #ff6600;">PHISH</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-orange to-transparent mx-auto"></div>
+                <p class="text-gray-400 mt-6 max-w-xl mx-auto">
+                    Can you identify which emails are phishing attempts? Analyze each email and decide if it's legitimate or a scam.
+                </p>
+            </div>
+
+            <div class="terminal reveal" style="box-shadow: 0 0 30px rgba(255, 102, 0, 0.3);">
+                <div class="terminal-header">
+                    <div class="terminal-dot bg-cyber-red"></div>
+                    <div class="terminal-dot bg-cyber-orange"></div>
+                    <div class="terminal-dot bg-cyber-green"></div>
+                    <span class="ml-4 text-gray-500 text-sm">email_analyzer.exe</span>
+                </div>
+                <div class="p-6" id="phishing-container">
+                    <!-- Phishing simulator populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Password Strength Checker Section -->
+    <section id="password-checker" class="py-32 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-green font-mono tracking-[0.5em] mb-4">// PASSWORD_ANALYZER</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    CHECK YOUR <span class="text-cyber-green neon-green">STRENGTH</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-green to-transparent mx-auto"></div>
+                <p class="text-gray-400 mt-6 max-w-xl mx-auto">
+                    Test how strong your password is. We never store or transmit your password - all analysis happens locally in your browser.
+                </p>
+            </div>
+
+            <div class="terminal reveal box-glow-green">
+                <div class="terminal-header">
+                    <div class="terminal-dot bg-cyber-red"></div>
+                    <div class="terminal-dot bg-cyber-orange"></div>
+                    <div class="terminal-dot bg-cyber-green"></div>
+                    <span class="ml-4 text-gray-500 text-sm">password_strength.sh</span>
+                </div>
+                <div class="p-8">
+                    <div class="mb-6">
+                        <label class="text-cyber-green text-sm mb-2 block">$ Enter password to analyze:</label>
+                        <div class="relative">
+                            <input type="password" id="password-input" class="w-full bg-cyber-black border border-cyber-green/50 p-4 text-cyber-green font-mono focus:outline-none focus:border-cyber-green focus:shadow-[0_0_10px_rgba(0,255,136,0.3)]" placeholder="Type your password here...">
+                            <button onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-cyber-green hover:text-white transition-colors">
+                                <svg id="eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-400">Strength Level:</span>
+                            <span id="strength-label" class="text-gray-500">Enter a password</span>
+                        </div>
+                        <div class="h-3 bg-cyber-black border border-cyber-green/30 rounded overflow-hidden">
+                            <div id="strength-bar" class="h-full transition-all duration-500" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div id="password-feedback" class="space-y-2 text-sm">
+                        <p class="text-gray-500">> Waiting for input...</p>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-cyber-green/20">
+                        <p class="text-cyber-cyan text-sm mb-3">> Estimated crack time: <span id="crack-time" class="text-white">-</span></p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                            <div class="text-center p-3 border border-cyber-green/20">
+                                <div id="has-length" class="text-gray-500">○</div>
+                                <div class="text-gray-400 mt-1">16+ chars</div>
+                            </div>
+                            <div class="text-center p-3 border border-cyber-green/20">
+                                <div id="has-upper" class="text-gray-500">○</div>
+                                <div class="text-gray-400 mt-1">Uppercase</div>
+                            </div>
+                            <div class="text-center p-3 border border-cyber-green/20">
+                                <div id="has-number" class="text-gray-500">○</div>
+                                <div class="text-gray-400 mt-1">Numbers</div>
+                            </div>
+                            <div class="text-center p-3 border border-cyber-green/20">
+                                <div id="has-special" class="text-gray-500">○</div>
+                                <div class="text-gray-400 mt-1">Symbols</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -730,6 +836,398 @@
                         SECURED
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Security Section -->
+    <section id="mobile-security" class="py-32 relative bg-cyber-dark/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-purple font-mono tracking-[0.5em] mb-4">// MOBILE_SECURITY</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    SECURE YOUR <span class="text-cyber-purple">DEVICES</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-purple to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="threat-card p-6 border border-cyber-purple/20 reveal">
+                    <div class="text-cyber-purple text-3xl mb-4">📱</div>
+                    <h3 class="font-display text-lg text-white mb-3">LOCK YOUR DEVICE</h3>
+                    <p class="text-gray-400 text-sm">Use biometrics (Face ID/fingerprint) or a 6+ digit PIN. Avoid pattern locks - they're easy to observe and crack.</p>
+                </div>
+                <div class="threat-card p-6 border border-cyber-purple/20 reveal" style="animation-delay: 0.1s;">
+                    <div class="text-cyber-purple text-3xl mb-4">🔄</div>
+                    <h3 class="font-display text-lg text-white mb-3">UPDATE REGULARLY</h3>
+                    <p class="text-gray-400 text-sm">Enable automatic updates for your OS and apps. Updates patch security vulnerabilities that attackers exploit.</p>
+                </div>
+                <div class="threat-card p-6 border border-cyber-purple/20 reveal" style="animation-delay: 0.2s;">
+                    <div class="text-cyber-purple text-3xl mb-4">📍</div>
+                    <h3 class="font-display text-lg text-white mb-3">MANAGE PERMISSIONS</h3>
+                    <p class="text-gray-400 text-sm">Review app permissions regularly. Does that flashlight app really need access to your contacts and location?</p>
+                </div>
+                <div class="threat-card p-6 border border-cyber-purple/20 reveal" style="animation-delay: 0.3s;">
+                    <div class="text-cyber-purple text-3xl mb-4">🏪</div>
+                    <h3 class="font-display text-lg text-white mb-3">OFFICIAL STORES ONLY</h3>
+                    <p class="text-gray-400 text-sm">Only download apps from official stores (App Store/Google Play). Avoid sideloading APKs from unknown sources.</p>
+                </div>
+                <div class="threat-card p-6 border border-cyber-purple/20 reveal" style="animation-delay: 0.4s;">
+                    <div class="text-cyber-purple text-3xl mb-4">📶</div>
+                    <h3 class="font-display text-lg text-white mb-3">AVOID PUBLIC WIFI</h3>
+                    <p class="text-gray-400 text-sm">Public WiFi can be intercepted. Use mobile data for sensitive tasks or connect through a trusted VPN.</p>
+                </div>
+                <div class="threat-card p-6 border border-cyber-purple/20 reveal" style="animation-delay: 0.5s;">
+                    <div class="text-cyber-purple text-3xl mb-4">🔐</div>
+                    <h3 class="font-display text-lg text-white mb-3">ENABLE FIND MY DEVICE</h3>
+                    <p class="text-gray-400 text-sm">Set up Find My iPhone/Android Device Manager so you can locate, lock, or wipe your device if lost or stolen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Remote Work Security Section -->
+    <section id="remote-work" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-cyan font-mono tracking-[0.5em] mb-4">// REMOTE_WORK_SECURITY</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    WORK FROM <span class="text-cyber-cyan neon-cyan">ANYWHERE</span> SAFELY
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="space-y-6 reveal">
+                    <div class="flex gap-4 p-6 border border-cyber-cyan/20 bg-cyber-dark/30">
+                        <div class="text-cyber-cyan text-2xl">🏠</div>
+                        <div>
+                            <h3 class="font-display text-white mb-2">SECURE YOUR HOME NETWORK</h3>
+                            <p class="text-gray-400 text-sm">Change default router passwords, use WPA3 encryption, create a separate network for IoT devices.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 border border-cyber-cyan/20 bg-cyber-dark/30">
+                        <div class="text-cyber-cyan text-2xl">🖥️</div>
+                        <div>
+                            <h3 class="font-display text-white mb-2">USE COMPANY-APPROVED TOOLS</h3>
+                            <p class="text-gray-400 text-sm">Only use authorized software and cloud services. Shadow IT creates security blind spots.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 border border-cyber-cyan/20 bg-cyber-dark/30">
+                        <div class="text-cyber-cyan text-2xl">🔒</div>
+                        <div>
+                            <h3 class="font-display text-white mb-2">ALWAYS USE VPN</h3>
+                            <p class="text-gray-400 text-sm">Connect through your company VPN when accessing work resources. It encrypts your traffic and protects sensitive data.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6 reveal" style="animation-delay: 0.2s;">
+                    <div class="flex gap-4 p-6 border border-cyber-cyan/20 bg-cyber-dark/30">
+                        <div class="text-cyber-cyan text-2xl">👀</div>
+                        <div>
+                            <h3 class="font-display text-white mb-2">BEWARE OF SHOULDER SURFING</h3>
+                            <p class="text-gray-400 text-sm">Be aware of your surroundings in public spaces. Use privacy screens on laptops and don't discuss sensitive info on calls.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 border border-cyber-cyan/20 bg-cyber-dark/30">
+                        <div class="text-cyber-cyan text-2xl">🚪</div>
+                        <div>
+                            <h3 class="font-display text-white mb-2">LOCK WHEN YOU LEAVE</h3>
+                            <p class="text-gray-400 text-sm">Always lock your computer when stepping away (Win+L or Cmd+Ctrl+Q). Even at home - it builds good habits.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 border border-cyber-cyan/20 bg-cyber-dark/30">
+                        <div class="text-cyber-cyan text-2xl">📄</div>
+                        <div>
+                            <h3 class="font-display text-white mb-2">SECURE PHYSICAL DOCUMENTS</h3>
+                            <p class="text-gray-400 text-sm">Shred sensitive documents. Don't leave confidential papers visible during video calls.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Safety Section -->
+    <section id="social-media" class="py-32 relative bg-cyber-dark/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-orange font-mono tracking-[0.5em] mb-4">// SOCIAL_MEDIA_SECURITY</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    PROTECT YOUR <span class="text-cyber-orange" style="text-shadow: 0 0 10px #ff6600;">DIGITAL IDENTITY</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-orange to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="terminal reveal" style="box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);">
+                    <div class="terminal-header">
+                        <div class="terminal-dot bg-cyber-red"></div>
+                        <div class="terminal-dot bg-cyber-orange"></div>
+                        <div class="terminal-dot bg-cyber-green"></div>
+                        <span class="ml-4 text-gray-500 text-sm">danger_zone.log</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-cyber-red mb-4">⚠️ NEVER SHARE:</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-red">✗</span> Your full birth date</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-red">✗</span> Home address or location tags</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-red">✗</span> Vacation plans (post after you return)</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-red">✗</span> Workplace badge or ID photos</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-red">✗</span> Answers to security questions</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-red">✗</span> Financial information</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="terminal reveal" style="animation-delay: 0.2s; box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);">
+                    <div class="terminal-header">
+                        <div class="terminal-dot bg-cyber-red"></div>
+                        <div class="terminal-dot bg-cyber-orange"></div>
+                        <div class="terminal-dot bg-cyber-green"></div>
+                        <span class="ml-4 text-gray-500 text-sm">best_practices.log</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-cyber-green mb-4">✓ ALWAYS DO:</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-green">✓</span> Review privacy settings regularly</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-green">✓</span> Enable login notifications</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-green">✓</span> Use unique passwords per platform</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-green">✓</span> Verify friend requests before accepting</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-green">✓</span> Think before you post</li>
+                            <li class="flex items-center gap-2 text-gray-400"><span class="text-cyber-green">✓</span> Report suspicious accounts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 border border-cyber-orange/30 bg-cyber-orange/5 reveal">
+                <p class="text-cyber-orange font-display mb-2">💡 PRO TIP: THE GRANDMA TEST</p>
+                <p class="text-gray-400 text-sm">Before posting anything, ask yourself: "Would I be comfortable if my grandmother saw this? What about my boss? A potential employer?" If the answer is no, don't post it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-red font-mono tracking-[0.5em] mb-4">// BREACH_ANALYSIS</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    REAL WORLD <span class="text-cyber-red neon-red">BREACHES</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-red to-transparent mx-auto"></div>
+                <p class="text-gray-400 mt-6 max-w-xl mx-auto">
+                    Learn from major security incidents. Understanding how breaches happen helps prevent them.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Case Study 1 -->
+                <div class="terminal reveal">
+                    <div class="terminal-header">
+                        <div class="terminal-dot bg-cyber-red"></div>
+                        <div class="terminal-dot bg-cyber-orange"></div>
+                        <div class="terminal-dot bg-cyber-green"></div>
+                        <span class="ml-4 text-gray-500 text-sm">case_001_solarwinds.log</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-wrap items-center gap-4 mb-4">
+                            <h3 class="font-display text-xl text-cyber-red">SOLARWINDS ATTACK (2020)</h3>
+                            <span class="px-3 py-1 text-xs border border-cyber-red text-cyber-red">SUPPLY CHAIN</span>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6 text-sm">
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> WHAT HAPPENED:</p>
+                                <p class="text-gray-400">Attackers compromised SolarWinds' software update system, inserting malware into legitimate updates. 18,000+ organizations downloaded the infected update.</p>
+                            </div>
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> IMPACT:</p>
+                                <p class="text-gray-400">US government agencies, Fortune 500 companies, and critical infrastructure were compromised. Attackers had access for months before detection.</p>
+                            </div>
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> LESSON:</p>
+                                <p class="text-gray-400">Verify the integrity of software updates. Implement zero-trust architecture. Monitor for unusual network behavior.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="terminal reveal" style="animation-delay: 0.1s;">
+                    <div class="terminal-header">
+                        <div class="terminal-dot bg-cyber-red"></div>
+                        <div class="terminal-dot bg-cyber-orange"></div>
+                        <div class="terminal-dot bg-cyber-green"></div>
+                        <span class="ml-4 text-gray-500 text-sm">case_002_colonial.log</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-wrap items-center gap-4 mb-4">
+                            <h3 class="font-display text-xl text-cyber-red">COLONIAL PIPELINE (2021)</h3>
+                            <span class="px-3 py-1 text-xs border border-cyber-orange text-cyber-orange">RANSOMWARE</span>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6 text-sm">
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> WHAT HAPPENED:</p>
+                                <p class="text-gray-400">A single compromised password (found on the dark web) gave attackers VPN access. Ransomware shut down the largest fuel pipeline in the US.</p>
+                            </div>
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> IMPACT:</p>
+                                <p class="text-gray-400">Fuel shortages across the East Coast. $4.4 million ransom paid. 6-day operational shutdown affecting millions.</p>
+                            </div>
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> LESSON:</p>
+                                <p class="text-gray-400">Never reuse passwords. Enable MFA on all accounts, especially VPN. One weak credential can bring down critical infrastructure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="terminal reveal" style="animation-delay: 0.2s;">
+                    <div class="terminal-header">
+                        <div class="terminal-dot bg-cyber-red"></div>
+                        <div class="terminal-dot bg-cyber-orange"></div>
+                        <div class="terminal-dot bg-cyber-green"></div>
+                        <span class="ml-4 text-gray-500 text-sm">case_003_twitter.log</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-wrap items-center gap-4 mb-4">
+                            <h3 class="font-display text-xl text-cyber-red">TWITTER HACK (2020)</h3>
+                            <span class="px-3 py-1 text-xs border border-cyber-purple text-cyber-purple">SOCIAL ENGINEERING</span>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6 text-sm">
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> WHAT HAPPENED:</p>
+                                <p class="text-gray-400">A 17-year-old called Twitter employees posing as IT support, convincing them to share credentials. Gained access to internal admin tools.</p>
+                            </div>
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> IMPACT:</p>
+                                <p class="text-gray-400">High-profile accounts (Obama, Biden, Musk, Apple) hijacked to promote Bitcoin scam. $120,000 stolen. Massive reputation damage.</p>
+                            </div>
+                            <div>
+                                <p class="text-cyber-cyan mb-2">> LESSON:</p>
+                                <p class="text-gray-400">Always verify identity through official channels. IT will never ask for your password. When in doubt, hang up and call back on a known number.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Glossary Section -->
+    <section id="glossary" class="py-32 relative bg-cyber-dark/50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-green font-mono tracking-[0.5em] mb-4">// SECURITY_GLOSSARY</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    KNOW THE <span class="text-cyber-green neon-green">TERMS</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-green to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4" id="glossary-container">
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal">
+                    <h4 class="font-display text-cyber-green mb-2">MFA / 2FA</h4>
+                    <p class="text-gray-400 text-sm">Multi-Factor / Two-Factor Authentication. Requires multiple forms of verification (password + phone code) to access accounts.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.05s;">
+                    <h4 class="font-display text-cyber-green mb-2">PHISHING</h4>
+                    <p class="text-gray-400 text-sm">Fraudulent attempt to obtain sensitive information by disguising as a trustworthy entity via email, text, or websites.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.1s;">
+                    <h4 class="font-display text-cyber-green mb-2">RANSOMWARE</h4>
+                    <p class="text-gray-400 text-sm">Malware that encrypts your files and demands payment for the decryption key. Often spreads through phishing emails.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.15s;">
+                    <h4 class="font-display text-cyber-green mb-2">VPN</h4>
+                    <p class="text-gray-400 text-sm">Virtual Private Network. Creates an encrypted tunnel for your internet traffic, protecting data from interception.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.2s;">
+                    <h4 class="font-display text-cyber-green mb-2">SOCIAL ENGINEERING</h4>
+                    <p class="text-gray-400 text-sm">Psychological manipulation to trick people into making security mistakes or revealing sensitive information.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.25s;">
+                    <h4 class="font-display text-cyber-green mb-2">ZERO-DAY</h4>
+                    <p class="text-gray-400 text-sm">A software vulnerability unknown to the vendor. Called "zero-day" because developers have had zero days to fix it.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.3s;">
+                    <h4 class="font-display text-cyber-green mb-2">ENCRYPTION</h4>
+                    <p class="text-gray-400 text-sm">Converting data into a coded format that can only be read with the correct decryption key. Protects data at rest and in transit.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.35s;">
+                    <h4 class="font-display text-cyber-green mb-2">FIREWALL</h4>
+                    <p class="text-gray-400 text-sm">Network security system that monitors and controls incoming/outgoing traffic based on predetermined security rules.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.4s;">
+                    <h4 class="font-display text-cyber-green mb-2">MALWARE</h4>
+                    <p class="text-gray-400 text-sm">Malicious software designed to damage, disrupt, or gain unauthorized access. Includes viruses, worms, trojans, and spyware.</p>
+                </div>
+                <div class="p-4 border border-cyber-green/20 bg-cyber-dark/30 reveal" style="animation-delay: 0.45s;">
+                    <h4 class="font-display text-cyber-green mb-2">DATA BREACH</h4>
+                    <p class="text-gray-400 text-sm">Unauthorized access to confidential data. Can result in exposure of personal information, financial data, or trade secrets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incident Reporting Section -->
+    <section id="incident" class="py-32 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-cyber-red font-mono tracking-[0.5em] mb-4">// INCIDENT_RESPONSE</p>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                    REPORT AN <span class="text-cyber-red neon-red">INCIDENT</span>
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-red to-transparent mx-auto"></div>
+                <p class="text-gray-400 mt-6 max-w-xl mx-auto">
+                    If you suspect a security incident, act fast. Quick reporting limits damage and helps protect others.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="terminal reveal" style="box-shadow: 0 0 20px rgba(255, 0, 85, 0.2);">
+                    <div class="terminal-header">
+                        <div class="terminal-dot bg-cyber-red"></div>
+                        <div class="terminal-dot bg-cyber-orange"></div>
+                        <div class="terminal-dot bg-cyber-green"></div>
+                        <span class="ml-4 text-gray-500 text-sm">emergency_protocol.sh</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-cyber-red mb-4">🚨 IMMEDIATE STEPS:</h3>
+                        <ol class="space-y-3 text-sm text-gray-400">
+                            <li class="flex gap-3"><span class="text-cyber-red font-display">01.</span> Don't panic - but act quickly</li>
+                            <li class="flex gap-3"><span class="text-cyber-red font-display">02.</span> Disconnect from network if malware suspected</li>
+                            <li class="flex gap-3"><span class="text-cyber-red font-display">03.</span> Don't click any more links or open files</li>
+                            <li class="flex gap-3"><span class="text-cyber-red font-display">04.</span> Document what happened (screenshots, times)</li>
+                            <li class="flex gap-3"><span class="text-cyber-red font-display">05.</span> Report immediately to IT Security</li>
+                            <li class="flex gap-3"><span class="text-cyber-red font-display">06.</span> Change compromised passwords from clean device</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="space-y-4 reveal" style="animation-delay: 0.1s;">
+                    <div class="p-6 border border-cyber-cyan/30 bg-cyber-cyan/5">
+                        <h4 class="font-display text-cyber-cyan mb-2">📧 REPORT PHISHING</h4>
+                        <p class="text-gray-400 text-sm mb-2">Forward suspicious emails to:</p>
+                        <p class="text-cyber-cyan font-mono">phishing@company.com</p>
+                    </div>
+                    <div class="p-6 border border-cyber-orange/30 bg-cyber-orange/5">
+                        <h4 class="font-display text-cyber-orange mb-2">🔒 SECURITY INCIDENT</h4>
+                        <p class="text-gray-400 text-sm mb-2">Report breaches and suspicious activity:</p>
+                        <p class="text-cyber-orange font-mono">security@company.com</p>
+                    </div>
+                    <div class="p-6 border border-cyber-red/30 bg-cyber-red/5">
+                        <h4 class="font-display text-cyber-red mb-2">🆘 EMERGENCY HOTLINE</h4>
+                        <p class="text-gray-400 text-sm mb-2">24/7 Security Operations Center:</p>
+                        <p class="text-cyber-red font-mono">+1-800-SEC-URITY</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 border border-cyber-green/30 bg-cyber-green/5 reveal text-center">
+                <p class="text-cyber-green font-display mb-2">💡 REMEMBER</p>
+                <p class="text-gray-400">You will NEVER be punished for reporting a security incident in good faith. Early reporting saves time, money, and prevents further damage. When in doubt, report it!</p>
             </div>
         </div>
     </section>
@@ -1200,6 +1698,373 @@
                 }
             });
         });
+
+        // ============================================
+        // PHISHING EMAIL SIMULATOR
+        // ============================================
+        const phishingEmails = [
+            {
+                from: "security@amaz0n-support.com",
+                subject: "URGENT: Your account will be suspended!",
+                body: `Dear Valued Customer,
+
+We have detected unusual activity on your account. Your Amazon account will be SUSPENDED within 24 hours unless you verify your information immediately.
+
+Click here to verify your account: http://amaz0n-verify.suspicious-link.com/login
+
+If you do not verify within 24 hours, your account will be permanently deleted and you will lose access to all your orders and Prime benefits.
+
+Best regards,
+Amazon Security Team`,
+                isPhishing: true,
+                redFlags: [
+                    "Suspicious sender domain (amaz0n-support.com uses zero instead of 'o')",
+                    "Urgent language and threats of account suspension",
+                    "Generic greeting 'Dear Valued Customer'",
+                    "Suspicious link URL doesn't match Amazon's domain",
+                    "Pressure to act within 24 hours"
+                ]
+            },
+            {
+                from: "noreply@github.com",
+                subject: "Your GitHub password was recently changed",
+                body: `Hi there,
+
+This is a confirmation that the password for your GitHub account was recently changed.
+
+If you made this change, you can safely ignore this email.
+
+If you did NOT make this change, please secure your account immediately by visiting:
+https://github.com/settings/security
+
+Thanks,
+The GitHub Team`,
+                isPhishing: false,
+                redFlags: [
+                    "This is a legitimate email - sender domain is correct (github.com)",
+                    "Link points to official GitHub domain",
+                    "No urgent pressure or threats",
+                    "Professional tone and formatting",
+                    "Informs without demanding immediate action"
+                ]
+            },
+            {
+                from: "IT-Department@yourcompany.com",
+                subject: "Password Expiration Notice - Action Required",
+                body: `Hello,
+
+Your network password will expire in 3 days. To avoid any interruption to your work, please update your password now.
+
+Click the link below to change your password:
+http://password-reset.yourcompany-it.net/update
+
+Username: Your email address
+Temporary Password: Changeme123!
+
+IT Support Team
+Internal Ticket: #INC0012345`,
+                isPhishing: true,
+                redFlags: [
+                    "Link domain doesn't match company domain (yourcompany-it.net vs yourcompany.com)",
+                    "Includes a 'temporary password' - legitimate IT won't send passwords via email",
+                    "External link for an internal company process",
+                    "Real IT departments use internal systems, not external links"
+                ]
+            },
+            {
+                from: "notifications@linkedin.com",
+                subject: "John Smith has endorsed you for Project Management",
+                body: `Hi,
+
+John Smith has endorsed you for the following skill: Project Management
+
+See your endorsement: https://www.linkedin.com/in/yourprofile/endorsements
+
+You can manage your endorsement notifications in your settings.
+
+Thanks,
+The LinkedIn Team`,
+                isPhishing: false,
+                redFlags: [
+                    "This is a legitimate email - sender is linkedin.com",
+                    "Link points to official LinkedIn domain (linkedin.com)",
+                    "Standard notification format",
+                    "No urgent calls to action or threats",
+                    "Provides option to manage settings"
+                ]
+            },
+            {
+                from: "support@paypa1.com",
+                subject: "Your PayPal account has been limited",
+                body: `Dear PayPal Customer,
+
+We've noticed some unusual activity in your account and have temporarily limited what you can do.
+
+To restore your account access, please confirm your identity by clicking below:
+
+[Confirm My Identity]
+http://paypa1-secure.verify-account.com/confirm
+
+If you don't confirm within 48 hours, your account will be permanently restricted.
+
+PayPal Security Center`,
+                isPhishing: true,
+                redFlags: [
+                    "Sender domain uses '1' instead of 'l' (paypa1.com)",
+                    "Link goes to non-PayPal domain",
+                    "Threatening language about permanent restrictions",
+                    "Generic greeting 'Dear PayPal Customer'",
+                    "48-hour deadline creates false urgency"
+                ]
+            }
+        ];
+
+        let currentPhishingIndex = 0;
+        let phishingScore = 0;
+
+        function renderPhishingSimulator() {
+            const container = document.getElementById('phishing-container');
+            const email = phishingEmails[currentPhishingIndex];
+
+            container.innerHTML = `
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-cyber-orange">EMAIL ${currentPhishingIndex + 1}/${phishingEmails.length}</span>
+                        <span class="text-cyber-green">SCORE: ${phishingScore}/${phishingEmails.length}</span>
+                    </div>
+                    <div class="progress-bar mb-6">
+                        <div class="progress-fill" style="width: ${(currentPhishingIndex / phishingEmails.length) * 100}%; background: linear-gradient(90deg, #ff6600, #ff0055);"></div>
+                    </div>
+                </div>
+
+                <div class="bg-cyber-black border border-gray-700 rounded mb-6">
+                    <div class="p-4 border-b border-gray-700">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-gray-500 text-sm">From:</span>
+                            <span class="text-white text-sm">${email.from}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-500 text-sm">Subject:</span>
+                            <span class="text-cyber-orange text-sm font-bold">${email.subject}</span>
+                        </div>
+                    </div>
+                    <div class="p-4 text-gray-300 text-sm whitespace-pre-line leading-relaxed max-h-64 overflow-y-auto">${email.body}</div>
+                </div>
+
+                <p class="text-cyber-cyan mb-4">> Is this email legitimate or a phishing attempt?</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="checkPhishing(false)" class="p-4 border border-cyber-green/50 hover:border-cyber-green hover:bg-cyber-green/10 transition-all text-cyber-green font-bold">
+                        ✓ LEGITIMATE
+                    </button>
+                    <button onclick="checkPhishing(true)" class="p-4 border border-cyber-red/50 hover:border-cyber-red hover:bg-cyber-red/10 transition-all text-cyber-red font-bold">
+                        ⚠ PHISHING
+                    </button>
+                </div>
+            `;
+        }
+
+        function checkPhishing(userAnswer) {
+            const email = phishingEmails[currentPhishingIndex];
+            const isCorrect = userAnswer === email.isPhishing;
+            const container = document.getElementById('phishing-container');
+
+            if (isCorrect) phishingScore++;
+
+            const buttons = container.querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `mt-6 p-4 border ${isCorrect ? 'border-cyber-green bg-cyber-green/10' : 'border-cyber-red bg-cyber-red/10'}`;
+            resultDiv.innerHTML = `
+                <p class="${isCorrect ? 'text-cyber-green' : 'text-cyber-red'} font-bold mb-3">${isCorrect ? '✓ CORRECT!' : '✗ INCORRECT'}</p>
+                <p class="text-gray-400 text-sm mb-3">This email is <span class="${email.isPhishing ? 'text-cyber-red' : 'text-cyber-green'} font-bold">${email.isPhishing ? 'PHISHING' : 'LEGITIMATE'}</span></p>
+                <p class="text-cyber-cyan text-sm mb-2">> ${email.isPhishing ? 'Red Flags:' : 'Why it\'s safe:'}</p>
+                <ul class="space-y-1">
+                    ${email.redFlags.map(flag => `<li class="text-gray-400 text-xs flex gap-2"><span class="${email.isPhishing ? 'text-cyber-red' : 'text-cyber-green'}">•</span>${flag}</li>`).join('')}
+                </ul>
+            `;
+            container.appendChild(resultDiv);
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'mt-6 px-6 py-3 bg-cyber-orange text-white font-bold tracking-wider hover:bg-cyber-cyan hover:text-cyber-black transition-all';
+            nextBtn.textContent = currentPhishingIndex < phishingEmails.length - 1 ? 'NEXT EMAIL →' : 'VIEW RESULTS';
+            nextBtn.onclick = () => {
+                currentPhishingIndex++;
+                if (currentPhishingIndex < phishingEmails.length) {
+                    renderPhishingSimulator();
+                } else {
+                    showPhishingResults();
+                }
+            };
+            container.appendChild(nextBtn);
+        }
+
+        function showPhishingResults() {
+            const container = document.getElementById('phishing-container');
+            const percentage = Math.round((phishingScore / phishingEmails.length) * 100);
+            let rating, ratingColor;
+
+            if (percentage >= 80) {
+                rating = 'PHISHING EXPERT';
+                ratingColor = 'cyber-green';
+            } else if (percentage >= 60) {
+                rating = 'CAUTIOUS USER';
+                ratingColor = 'cyber-cyan';
+            } else {
+                rating = 'NEEDS PRACTICE';
+                ratingColor = 'cyber-red';
+            }
+
+            container.innerHTML = `
+                <div class="text-center">
+                    <p class="text-cyber-orange mb-4">// SIMULATION COMPLETE</p>
+                    <div class="font-display text-6xl text-${ratingColor} mb-4">${percentage}%</div>
+                    <p class="font-display text-2xl text-white mb-2">${rating}</p>
+                    <p class="text-gray-400 mb-8">You correctly identified ${phishingScore} out of ${phishingEmails.length} emails.</p>
+                    <button onclick="restartPhishing()" class="px-8 py-4 bg-cyber-orange text-white font-bold tracking-wider hover:bg-cyber-cyan hover:text-cyber-black transition-all">
+                        TRY AGAIN
+                    </button>
+                </div>
+            `;
+        }
+
+        function restartPhishing() {
+            currentPhishingIndex = 0;
+            phishingScore = 0;
+            renderPhishingSimulator();
+        }
+
+        // Initialize phishing simulator
+        renderPhishingSimulator();
+
+        // ============================================
+        // PASSWORD STRENGTH CHECKER
+        // ============================================
+        const passwordInput = document.getElementById('password-input');
+        const strengthBar = document.getElementById('strength-bar');
+        const strengthLabel = document.getElementById('strength-label');
+        const passwordFeedback = document.getElementById('password-feedback');
+        const crackTime = document.getElementById('crack-time');
+
+        const commonPasswords = ['password', '123456', 'qwerty', 'admin', 'letmein', 'welcome', 'monkey', 'dragon', 'master', 'login'];
+
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            let feedback = [];
+
+            if (password.length === 0) {
+                return { strength: 0, feedback: ['> Waiting for input...'], crackTime: '-' };
+            }
+
+            // Length checks
+            if (password.length >= 8) strength += 1;
+            if (password.length >= 12) strength += 1;
+            if (password.length >= 16) strength += 1;
+            if (password.length >= 20) strength += 1;
+
+            // Character variety
+            if (/[a-z]/.test(password)) strength += 1;
+            if (/[A-Z]/.test(password)) strength += 1;
+            if (/[0-9]/.test(password)) strength += 1;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 1;
+
+            // Penalties
+            if (commonPasswords.includes(password.toLowerCase())) {
+                strength = 1;
+                feedback.push('> ⚠️ This is a commonly used password!');
+            }
+
+            if (/(.)\1{2,}/.test(password)) {
+                strength = Math.max(1, strength - 2);
+                feedback.push('> ⚠️ Avoid repeated characters');
+            }
+
+            if (/^[a-zA-Z]+$/.test(password)) {
+                feedback.push('> Add numbers and symbols for more strength');
+            }
+
+            if (password.length < 12) {
+                feedback.push('> Increase length to at least 12 characters');
+            }
+
+            if (password.length < 16) {
+                feedback.push('> 16+ characters recommended for strong security');
+            }
+
+            if (!/[^a-zA-Z0-9]/.test(password)) {
+                feedback.push('> Add special characters (!@#$%^&*)');
+            }
+
+            // Calculate crack time estimate
+            let charsetSize = 0;
+            if (/[a-z]/.test(password)) charsetSize += 26;
+            if (/[A-Z]/.test(password)) charsetSize += 26;
+            if (/[0-9]/.test(password)) charsetSize += 10;
+            if (/[^a-zA-Z0-9]/.test(password)) charsetSize += 32;
+
+            const combinations = Math.pow(charsetSize, password.length);
+            const guessesPerSecond = 10000000000; // 10 billion guesses/sec
+            const seconds = combinations / guessesPerSecond;
+
+            let timeStr;
+            if (seconds < 1) timeStr = 'Instantly';
+            else if (seconds < 60) timeStr = Math.round(seconds) + ' seconds';
+            else if (seconds < 3600) timeStr = Math.round(seconds / 60) + ' minutes';
+            else if (seconds < 86400) timeStr = Math.round(seconds / 3600) + ' hours';
+            else if (seconds < 31536000) timeStr = Math.round(seconds / 86400) + ' days';
+            else if (seconds < 31536000 * 100) timeStr = Math.round(seconds / 31536000) + ' years';
+            else if (seconds < 31536000 * 1000000) timeStr = Math.round(seconds / 31536000 / 1000) + 'K years';
+            else timeStr = 'Centuries+';
+
+            if (feedback.length === 0) {
+                feedback.push('> ✓ Strong password!');
+            }
+
+            return { strength: Math.min(8, strength), feedback, crackTime: timeStr };
+        }
+
+        function updatePasswordUI() {
+            const password = passwordInput.value;
+            const result = checkPasswordStrength(password);
+
+            const percentage = (result.strength / 8) * 100;
+            strengthBar.style.width = percentage + '%';
+
+            let color, label;
+            if (result.strength <= 2) {
+                color = '#ff0055';
+                label = 'VERY WEAK';
+            } else if (result.strength <= 4) {
+                color = '#ff6600';
+                label = 'WEAK';
+            } else if (result.strength <= 6) {
+                color = '#ffff00';
+                label = 'MODERATE';
+            } else {
+                color = '#00ff88';
+                label = 'STRONG';
+            }
+
+            strengthBar.style.background = color;
+            strengthLabel.textContent = password.length === 0 ? 'Enter a password' : label;
+            strengthLabel.style.color = color;
+
+            passwordFeedback.innerHTML = result.feedback.map(f => `<p class="text-gray-400">${f}</p>`).join('');
+            crackTime.textContent = result.crackTime;
+
+            // Update checkmarks
+            document.getElementById('has-length').innerHTML = password.length >= 16 ? '<span class="text-cyber-green">✓</span>' : '<span class="text-gray-500">○</span>';
+            document.getElementById('has-upper').innerHTML = /[A-Z]/.test(password) ? '<span class="text-cyber-green">✓</span>' : '<span class="text-gray-500">○</span>';
+            document.getElementById('has-number').innerHTML = /[0-9]/.test(password) ? '<span class="text-cyber-green">✓</span>' : '<span class="text-gray-500">○</span>';
+            document.getElementById('has-special').innerHTML = /[^a-zA-Z0-9]/.test(password) ? '<span class="text-cyber-green">✓</span>' : '<span class="text-gray-500">○</span>';
+        }
+
+        passwordInput.addEventListener('input', updatePasswordUI);
+
+        function togglePasswordVisibility() {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+        }
     </script>
 </body>
 </html>
