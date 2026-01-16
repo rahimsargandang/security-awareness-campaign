@@ -359,6 +359,57 @@
         .stat-number {
             font-variant-numeric: tabular-nums;
         }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            /* Disable heavy animations on mobile for performance */
+            .scanlines::before {
+                display: none;
+            }
+
+            .crt-flicker {
+                animation: none;
+            }
+
+            /* Smaller checkbox on mobile */
+            .cyber-checkbox {
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+            }
+
+            /* Better touch targets */
+            button, a {
+                min-height: 44px;
+            }
+
+            /* Reduce glitch effect on mobile */
+            .glitch::before,
+            .glitch::after {
+                display: none;
+            }
+
+            /* Simpler terminal on mobile */
+            .terminal {
+                border-radius: 4px;
+            }
+
+            .terminal-header {
+                padding: 8px 12px;
+            }
+
+            .terminal-dot {
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        /* Improve text readability on small screens */
+        @media (max-width: 400px) {
+            .tracking-\\[0\\.5em\\] {
+                letter-spacing: 0.2em;
+            }
+        }
     </style>
 </head>
 <body class="font-mono text-gray-100 scanlines crt-flicker noise grid-pattern">
@@ -366,10 +417,10 @@
     <canvas id="matrix-bg"></canvas>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-cyber-black/80 backdrop-blur-md border-b border-cyber-cyan/20">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cyber-black/90 backdrop-blur-md border-b border-cyber-cyan/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
             <div class="flex items-center justify-between">
-                <a href="#" class="font-display text-2xl font-bold text-cyber-cyan neon-cyan tracking-wider">
+                <a href="#" class="font-display text-lg sm:text-2xl font-bold text-cyber-cyan neon-cyan tracking-wider">
                     CYBERGUARD<span class="text-cyber-green">_</span>
                 </a>
                 <div class="hidden lg:flex items-center gap-6">
@@ -381,84 +432,108 @@
                     <a href="#glossary" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[GLOSSARY]</a>
                     <a href="#incident" class="interactive-link text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[REPORT]</a>
                 </div>
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></span>
-                    <span class="text-cyber-green text-xs tracking-wider">SYSTEM ACTIVE</span>
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:flex items-center gap-2">
+                        <span class="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></span>
+                        <span class="text-cyber-green text-xs tracking-wider">SYSTEM ACTIVE</span>
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-cyber-cyan hover:text-cyber-green transition-colors" aria-label="Toggle menu">
+                        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-cyber-black/95 border-t border-cyber-cyan/20">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#quiz" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[ASSESSMENT]</a>
+                <a href="#phishing-sim" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[SIMULATOR]</a>
+                <a href="#threats" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[THREATS]</a>
+                <a href="#practices" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[DEFENSE]</a>
+                <a href="#case-studies" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[CASES]</a>
+                <a href="#glossary" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[GLOSSARY]</a>
+                <a href="#incident" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[REPORT]</a>
+                <a href="#checklist" onclick="closeMobileMenu()" class="block py-2 text-gray-400 hover:text-cyber-cyan transition-colors text-sm tracking-wide">[CHECKLIST]</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <!-- Animated circles -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 border border-cyber-cyan/20 rounded-full" style="animation: float 8s ease-in-out infinite;"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 border border-cyber-purple/20 rounded-full" style="animation: float 6s ease-in-out infinite reverse;"></div>
-            <div class="absolute top-1/2 left-1/2 w-[600px] h-[600px] border border-cyber-green/10 rounded-full -translate-x-1/2 -translate-y-1/2" style="animation: float 10s ease-in-out infinite;"></div>
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20">
+        <!-- Animated circles - hidden on mobile for performance -->
+        <div class="absolute inset-0 overflow-hidden hidden sm:block">
+            <div class="absolute top-1/4 left-1/4 w-48 sm:w-96 h-48 sm:h-96 border border-cyber-cyan/20 rounded-full" style="animation: float 8s ease-in-out infinite;"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-32 sm:w-64 h-32 sm:h-64 border border-cyber-purple/20 rounded-full" style="animation: float 6s ease-in-out infinite reverse;"></div>
+            <div class="absolute top-1/2 left-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] border border-cyber-green/10 rounded-full -translate-x-1/2 -translate-y-1/2" style="animation: float 10s ease-in-out infinite;"></div>
         </div>
 
-        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center relative z-10">
             <!-- Terminal window -->
-            <div class="terminal max-w-4xl mx-auto mb-12 box-glow-cyan">
+            <div class="terminal max-w-4xl mx-auto mb-8 sm:mb-12 box-glow-cyan">
                 <div class="terminal-header">
                     <div class="terminal-dot bg-cyber-red"></div>
                     <div class="terminal-dot bg-cyber-orange"></div>
                     <div class="terminal-dot bg-cyber-green"></div>
-                    <span class="ml-4 text-gray-500 text-sm">security_awareness.exe</span>
+                    <span class="ml-4 text-gray-500 text-xs sm:text-sm">security_awareness.exe</span>
                 </div>
-                <div class="p-8 text-left">
-                    <p class="text-cyber-green mb-2">$ initializing security protocol...</p>
-                    <p class="text-gray-500 mb-2">> Loading threat database...</p>
-                    <p class="text-gray-500 mb-2">> Analyzing vulnerabilities...</p>
-                    <p class="text-cyber-cyan mb-4">> STATUS: <span class="text-cyber-green">READY</span></p>
-                    <div class="text-cyber-cyan text-lg">
+                <div class="p-4 sm:p-8 text-left">
+                    <p class="text-cyber-green mb-2 text-xs sm:text-base">$ initializing security protocol...</p>
+                    <p class="text-gray-500 mb-2 text-xs sm:text-base hidden sm:block">> Loading threat database...</p>
+                    <p class="text-gray-500 mb-2 text-xs sm:text-base hidden sm:block">> Analyzing vulnerabilities...</p>
+                    <p class="text-cyber-cyan mb-4 text-xs sm:text-base">> STATUS: <span class="text-cyber-green">READY</span></p>
+                    <div class="text-cyber-cyan text-sm sm:text-lg">
                         <span id="typed-text"></span><span class="animate-pulse">█</span>
                     </div>
                 </div>
             </div>
 
-            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 glitch" data-text="CYBER SECURITY">
+            <h1 class="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 glitch" data-text="CYBER SECURITY">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-cyber-green to-cyber-purple">CYBER SECURITY</span>
             </h1>
-            <h2 class="font-display text-2xl md:text-3xl text-cyber-cyan neon-cyan tracking-[0.3em] mb-8">
+            <h2 class="font-display text-lg sm:text-2xl md:text-3xl text-cyber-cyan neon-cyan tracking-[0.15em] sm:tracking-[0.3em] mb-6 sm:mb-8">
                 AWARENESS CAMPAIGN
             </h2>
-            <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p class="text-gray-400 text-sm sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2">
                 <span class="text-cyber-green">//</span> Your first line of defense starts with knowledge.
                 Learn to identify threats, protect your data, and become cyber resilient.
             </p>
 
             <!-- Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
-                <div class="p-6 border border-cyber-cyan/30 bg-cyber-dark/50 backdrop-blur-sm">
-                    <div class="font-display text-3xl md:text-4xl text-cyber-cyan neon-cyan stat-number" data-target="2200">0</div>
-                    <div class="text-gray-500 text-sm mt-2 tracking-wider">ATTACKS/SEC</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-4xl mx-auto mb-10 sm:mb-16">
+                <div class="p-3 sm:p-6 border border-cyber-cyan/30 bg-cyber-dark/50 backdrop-blur-sm">
+                    <div class="font-display text-xl sm:text-3xl md:text-4xl text-cyber-cyan neon-cyan stat-number" data-target="2200">0</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 tracking-wider">ATTACKS/SEC</div>
                 </div>
-                <div class="p-6 border border-cyber-red/30 bg-cyber-dark/50 backdrop-blur-sm">
-                    <div class="font-display text-3xl md:text-4xl text-cyber-red neon-red stat-number" data-target="95">0</div>
-                    <div class="text-gray-500 text-sm mt-2 tracking-wider">% HUMAN ERROR</div>
+                <div class="p-3 sm:p-6 border border-cyber-red/30 bg-cyber-dark/50 backdrop-blur-sm">
+                    <div class="font-display text-xl sm:text-3xl md:text-4xl text-cyber-red neon-red stat-number" data-target="95">0</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 tracking-wider">% HUMAN ERROR</div>
                 </div>
-                <div class="p-6 border border-cyber-green/30 bg-cyber-dark/50 backdrop-blur-sm">
-                    <div class="font-display text-3xl md:text-4xl text-cyber-green neon-green stat-number" data-target="4">0</div>
-                    <div class="text-gray-500 text-sm mt-2 tracking-wider">M$ AVG BREACH</div>
+                <div class="p-3 sm:p-6 border border-cyber-green/30 bg-cyber-dark/50 backdrop-blur-sm">
+                    <div class="font-display text-xl sm:text-3xl md:text-4xl text-cyber-green neon-green stat-number" data-target="4">0</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 tracking-wider">M$ AVG BREACH</div>
                 </div>
-                <div class="p-6 border border-cyber-purple/30 bg-cyber-dark/50 backdrop-blur-sm">
-                    <div class="font-display text-3xl md:text-4xl text-cyber-purple stat-number" data-target="287">0</div>
-                    <div class="text-gray-500 text-sm mt-2 tracking-wider">DAYS TO DETECT</div>
+                <div class="p-3 sm:p-6 border border-cyber-purple/30 bg-cyber-dark/50 backdrop-blur-sm">
+                    <div class="font-display text-xl sm:text-3xl md:text-4xl text-cyber-purple stat-number" data-target="287">0</div>
+                    <div class="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 tracking-wider">DAYS TO DETECT</div>
                 </div>
             </div>
 
-            <a href="#quiz" class="inline-flex items-center gap-3 px-8 py-4 bg-cyber-cyan text-cyber-black font-bold tracking-wider hover:bg-cyber-green transition-all duration-300 group">
+            <a href="#quiz" class="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-cyber-cyan text-cyber-black font-bold tracking-wider hover:bg-cyber-green transition-all duration-300 group text-sm sm:text-base">
                 <span>START ASSESSMENT</span>
-                <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
             </a>
         </div>
 
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-10 left-1/2 scroll-indicator">
+        <!-- Scroll indicator - hidden on mobile -->
+        <div class="absolute bottom-10 left-1/2 scroll-indicator hidden sm:block">
             <div class="w-8 h-12 border-2 border-cyber-cyan rounded-full flex justify-center pt-2">
                 <div class="w-1 h-3 bg-cyber-cyan rounded-full animate-pulse"></div>
             </div>
@@ -466,11 +541,11 @@
     </section>
 
     <!-- Interactive Quiz Section -->
-    <section id="quiz" class="py-32 relative">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="quiz" class="py-16 sm:py-32 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-purple font-mono tracking-[0.5em] mb-4">// KNOWLEDGE_ASSESSMENT</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     TEST YOUR <span class="text-cyber-purple">AWARENESS</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-purple to-transparent mx-auto"></div>
@@ -504,11 +579,11 @@
     </section>
 
     <!-- Phishing Email Simulator Section -->
-    <section id="phishing-sim" class="py-32 relative bg-cyber-dark/50">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="phishing-sim" class="py-16 sm:py-32 relative bg-cyber-dark/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-orange font-mono tracking-[0.5em] mb-4">// PHISHING_SIMULATOR</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     SPOT THE <span class="text-cyber-orange" style="text-shadow: 0 0 10px #ff6600;">PHISH</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-orange to-transparent mx-auto"></div>
@@ -532,11 +607,11 @@
     </section>
 
     <!-- Password Strength Checker Section -->
-    <section id="password-checker" class="py-32 relative">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="password-checker" class="py-16 sm:py-32 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-green font-mono tracking-[0.5em] mb-4">// PASSWORD_ANALYZER</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     CHECK YOUR <span class="text-cyber-green neon-green">STRENGTH</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-green to-transparent mx-auto"></div>
@@ -607,11 +682,11 @@
     </section>
 
     <!-- Threats Section -->
-    <section id="threats" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
+    <section id="threats" class="py-16 sm:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-20 reveal">
                 <p class="text-cyber-red font-mono tracking-[0.5em] mb-4">// THREAT_DATABASE</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     KNOW YOUR <span class="text-cyber-red neon-red">ENEMY</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-red to-transparent mx-auto"></div>
@@ -730,11 +805,11 @@
     </section>
 
     <!-- Best Practices Section -->
-    <section id="practices" class="py-32 relative bg-cyber-dark/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
+    <section id="practices" class="py-16 sm:py-32 relative bg-cyber-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-20 reveal">
                 <p class="text-cyber-green font-mono tracking-[0.5em] mb-4">// DEFENSE_PROTOCOLS</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     BUILD YOUR <span class="text-cyber-green neon-green">SHIELD</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-green to-transparent mx-auto"></div>
@@ -841,11 +916,11 @@
     </section>
 
     <!-- Mobile Security Section -->
-    <section id="mobile-security" class="py-32 relative bg-cyber-dark/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="mobile-security" class="py-16 sm:py-32 relative bg-cyber-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-purple font-mono tracking-[0.5em] mb-4">// MOBILE_SECURITY</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     SECURE YOUR <span class="text-cyber-purple">DEVICES</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-purple to-transparent mx-auto"></div>
@@ -887,11 +962,11 @@
     </section>
 
     <!-- Remote Work Security Section -->
-    <section id="remote-work" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="remote-work" class="py-16 sm:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-cyan font-mono tracking-[0.5em] mb-4">// REMOTE_WORK_SECURITY</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     WORK FROM <span class="text-cyber-cyan neon-cyan">ANYWHERE</span> SAFELY
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto"></div>
@@ -949,11 +1024,11 @@
     </section>
 
     <!-- Social Media Safety Section -->
-    <section id="social-media" class="py-32 relative bg-cyber-dark/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="social-media" class="py-16 sm:py-32 relative bg-cyber-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-orange font-mono tracking-[0.5em] mb-4">// SOCIAL_MEDIA_SECURITY</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     PROTECT YOUR <span class="text-cyber-orange" style="text-shadow: 0 0 10px #ff6600;">DIGITAL IDENTITY</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-orange to-transparent mx-auto"></div>
@@ -1008,11 +1083,11 @@
     </section>
 
     <!-- Case Studies Section -->
-    <section id="case-studies" class="py-32 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="case-studies" class="py-16 sm:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-red font-mono tracking-[0.5em] mb-4">// BREACH_ANALYSIS</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     REAL WORLD <span class="text-cyber-red neon-red">BREACHES</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-red to-transparent mx-auto"></div>
@@ -1116,11 +1191,11 @@
     </section>
 
     <!-- Security Glossary Section -->
-    <section id="glossary" class="py-32 relative bg-cyber-dark/50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="glossary" class="py-16 sm:py-32 relative bg-cyber-dark/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-green font-mono tracking-[0.5em] mb-4">// SECURITY_GLOSSARY</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     KNOW THE <span class="text-cyber-green neon-green">TERMS</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-green to-transparent mx-auto"></div>
@@ -1172,11 +1247,11 @@
     </section>
 
     <!-- Incident Reporting Section -->
-    <section id="incident" class="py-32 relative">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="incident" class="py-16 sm:py-32 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-red font-mono tracking-[0.5em] mb-4">// INCIDENT_RESPONSE</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     REPORT AN <span class="text-cyber-red neon-red">INCIDENT</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-red to-transparent mx-auto"></div>
@@ -1233,11 +1308,11 @@
     </section>
 
     <!-- Security Checklist Section -->
-    <section id="checklist" class="py-32 relative bg-cyber-dark/50">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+    <section id="checklist" class="py-16 sm:py-32 relative bg-cyber-dark/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16 reveal">
                 <p class="text-cyber-cyan font-mono tracking-[0.5em] mb-4">// SECURITY_PROTOCOL</p>
-                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
                     YOUR <span class="text-cyber-cyan neon-cyan">CHECKLIST</span>
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto"></div>
@@ -1259,66 +1334,66 @@
 
             <!-- Checklist Items -->
             <div class="space-y-4 reveal" id="checklist-container">
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="password">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Changed passwords to strong, unique ones</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Changed passwords to strong, unique ones</span>
                         <p class="text-gray-500 text-sm mt-1">Use 16+ characters with mixed case, numbers, and symbols</p>
                     </div>
                 </label>
 
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="mfa">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Enabled MFA on all critical accounts</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Enabled MFA on all critical accounts</span>
                         <p class="text-gray-500 text-sm mt-1">Email, banking, social media, and work accounts</p>
                     </div>
                 </label>
 
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="manager">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Started using a password manager</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Started using a password manager</span>
                         <p class="text-gray-500 text-sm mt-1">Securely store and generate complex passwords</p>
                     </div>
                 </label>
 
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="updates">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Enabled automatic software updates</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Enabled automatic software updates</span>
                         <p class="text-gray-500 text-sm mt-1">Keep your OS, browser, and apps up to date</p>
                     </div>
                 </label>
 
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="backup">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Set up regular data backups</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Set up regular data backups</span>
                         <p class="text-gray-500 text-sm mt-1">Follow 3-2-1 backup rule for critical files</p>
                     </div>
                 </label>
 
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="phishing">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Learned to identify phishing attempts</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Learned to identify phishing attempts</span>
                         <p class="text-gray-500 text-sm mt-1">Check sender addresses, hover over links, verify requests</p>
                     </div>
                 </label>
 
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="vpn">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Using VPN on public networks</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Using VPN on public networks</span>
                         <p class="text-gray-500 text-sm mt-1">Protect your traffic when using public WiFi</p>
                     </div>
                 </label>
 
-                <label class="flex items-center gap-4 p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
+                <label class="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-cyber-cyan/20 bg-cyber-dark/50 cursor-pointer hover:border-cyber-cyan/50 transition-all group">
                     <input type="checkbox" class="cyber-checkbox" data-task="encryption">
                     <div>
-                        <span class="text-white group-hover:text-cyber-cyan transition-colors">Enabled device encryption</span>
+                        <span class="text-white group-hover:text-cyber-cyan transition-colors text-sm sm:text-base">Enabled device encryption</span>
                         <p class="text-gray-500 text-sm mt-1">Encrypt your laptop, phone, and external drives</p>
                     </div>
                 </label>
@@ -1337,11 +1412,11 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-16 border-t border-cyber-cyan/20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
-                <div>
-                    <a href="#" class="font-display text-2xl font-bold text-cyber-cyan neon-cyan tracking-wider">
+    <footer class="py-10 sm:py-16 border-t border-cyber-cyan/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <a href="#" class="font-display text-xl sm:text-2xl font-bold text-cyber-cyan neon-cyan tracking-wider">
                         CYBERGUARD<span class="text-cyber-green">_</span>
                     </a>
                     <p class="text-gray-500 mt-4 text-sm">
@@ -2065,6 +2140,38 @@ PayPal Security Center`,
             const type = passwordInput.type === 'password' ? 'text' : 'password';
             passwordInput.type = type;
         }
+
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('mobile-menu');
+            const nav = document.querySelector('nav');
+            if (!nav.contains(e.target) && !menu.classList.contains('hidden')) {
+                closeMobileMenu();
+            }
+        });
     </script>
 </body>
 </html>
