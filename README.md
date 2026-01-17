@@ -1,54 +1,80 @@
-# CYBERGUARD - Security Awareness Campaign
+# PASSGUARD - Password Security Awareness
 
-A comprehensive, interactive cybersecurity awareness training website designed to educate users about digital threats and best practices.
-
-**Live Demo:** [https://rahimsargandang.github.io/security-awareness-campaign/](https://rahimsargandang.github.io/security-awareness-campaign/)
+A comprehensive, interactive password security awareness website designed to educate home users about password best practices and protection strategies.
 
 ## Features
 
-### Interactive Training Tools
-- **Knowledge Assessment Quiz** - 5-question quiz to test security awareness with instant feedback
-- **Phishing Email Simulator** - Analyze 5 realistic email scenarios and identify phishing attempts
-- **Password Strength Checker** - Real-time password analysis with crack time estimates
+### Interactive Tools
+- **Password Knowledge Quiz** - 8-question quiz testing password security awareness with instant feedback and detailed results
+- **Password Strength Checker** - Real-time password analysis with crack time estimates (all processing done locally)
 
 ### Learning Modules
-- **Threat Database** - Learn about 6 major cyber threats (Phishing, Malware, Ransomware, Social Engineering, Password Attacks, Insider Threats)
-- **Defense Protocols** - 5 essential security practices everyone should follow
-- **Mobile Security** - Tips for securing smartphones and tablets
-- **Remote Work Security** - Best practices for working from home safely
-- **Social Media Safety** - Protecting your digital identity online
 
-### Case Studies
-Real-world breach analysis including:
-- SolarWinds Supply Chain Attack (2020)
-- Colonial Pipeline Ransomware (2021)
-- Twitter Social Engineering Hack (2020)
+#### Creating Strong Passwords
+- Passphrase method
+- Random generator approach
+- Sentence method
+- Base + modifier system
+- Golden rules of password creation
+
+#### Attack Types Explained
+- Brute force attacks
+- Dictionary attacks
+- Credential stuffing
+- Phishing
+- Keylogging
+- Social engineering
+- Crack time comparison table
+
+#### Password Managers
+- Why you need one
+- What to look for (zero-knowledge encryption, 2FA, breach monitoring)
+- Trusted options (Bitwarden, 1Password, Dashlane, KeePassXC)
+
+#### Two-Factor Authentication (2FA)
+- How 2FA works
+- Authenticator apps (recommended)
+- Hardware security keys (most secure)
+- SMS/Email codes (weaker options)
+- Backup codes importance
+
+#### Real World Breaches
+- RockYou2024 (10 billion passwords)
+- LinkedIn (700 million records)
+- Collection #1-5 (2.2 billion combinations)
+- Yahoo (3 billion accounts)
+
+#### Password Myths Debunked
+- "Change passwords every 90 days"
+- "Special characters make passwords secure"
+- "Writing passwords down is always bad"
+- "I'm not important enough to be hacked"
+- "Browser password saving is unsafe"
 
 ### Resources
-- **Security Glossary** - Key cybersecurity terms explained
-- **Incident Reporting Guide** - What to do if you suspect a security breach
-- **Security Checklist** - Trackable checklist with progress saved locally
+- **Security Checklist** - 10-item actionable checklist with progress saved locally
+- **Quick Reference** - Key rules summary
 
 ## Tech Stack
 - HTML5
 - Tailwind CSS (CDN)
 - Vanilla JavaScript
-- Google Fonts (JetBrains Mono, Orbitron)
+- Google Fonts (IBM Plex Mono, Syne)
 
 ## Design
-- Cyber-noir aesthetic with terminal/hacker theme
-- Matrix-style animated background
-- Neon glow effects and glitch animations
-- Custom cursor and interactive hover states
+- Dark vault aesthetic with emerald green accents
+- Clean, professional interface
+- Subtle animations and glow effects
+- Card-based content organization
 
 ## Mobile Responsive
 Fully optimized for all devices:
 
-- **Mobile Navigation** - Hamburger menu with smooth toggle animation
+- **Mobile Navigation** - Hamburger menu with smooth toggle
 - **Responsive Typography** - Text scales appropriately across screen sizes
 - **Touch-Friendly** - All interactive elements meet 44px minimum touch target
-- **Performance Optimized** - Heavy animations disabled on mobile for better battery life
-- **Adaptive Layout** - Grid layouts stack properly on smaller screens
+- **Adaptive Layout** - Grids and cards stack properly on smaller screens
+- **Responsive Buttons** - CTAs stack vertically on mobile
 
 Tested on:
 - iPhone / Android phones
@@ -74,13 +100,5 @@ This is a static site that can be deployed to:
 - Cloudflare Pages
 - Any static hosting
 
-## Screenshots
-
-| Desktop | Mobile |
-|---------|--------|
-| Hero section with Matrix background | Responsive hamburger menu |
-| Interactive quiz terminal | Touch-optimized buttons |
-| Phishing email simulator | Stacked card layouts |
-
 ## License
-MIT License - Feel free to use and modify for your organization's security training needs.
+MIT License - Feel free to use and modify for educational purposes.
