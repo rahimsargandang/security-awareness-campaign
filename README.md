@@ -7,6 +7,8 @@ A comprehensive, interactive password security awareness website designed to edu
 ### Interactive Tools
 - **Password Knowledge Quiz** - 8-question quiz testing password security awareness with instant feedback and detailed results
 - **Password Strength Checker** - Real-time password analysis with crack time estimates (all processing done locally)
+- **Password Generator** - Generate strong random passwords with customizable length (8-40 chars) and character types, with one-click copy
+- **Password Ranking Game** - Drag-and-drop game to rank passwords from weakest to strongest across 3 rounds (mobile touch supported)
 
 ### Learning Modules
 
